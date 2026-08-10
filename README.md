@@ -2,6 +2,10 @@
 
 > Discover everything happening in Berlin — events, transport, news, and community.
 
+Hosted on:
+- (Azure)[https://berlinpulse-web.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io]
+- (Home Server)[https://berlin.mercul.org]
+
 A full-stack microservice web application built for the Cloud IT course.
 
 ## Architecture
