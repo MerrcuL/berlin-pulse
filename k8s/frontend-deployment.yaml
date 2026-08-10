@@ -1,0 +1,43 @@
+# Frontend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: berlin-pulse
+    component: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: berlin-pulse
+        component: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: berlinpulse/frontend:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    component: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

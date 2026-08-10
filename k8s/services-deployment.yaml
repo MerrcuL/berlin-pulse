@@ -1,0 +1,251 @@
+# Events Service Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: events
+  labels:
+    app: berlin-pulse
+    component: events
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: events
+  template:
+    metadata:
+      labels:
+        app: berlin-pulse
+        component: events
+    spec:
+      containers:
+        - name: events
+          image: berlinpulse/events:latest
+          ports:
+            - containerPort: 4001
+          env:
+            - name: PORT
+              value: "4001"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4001
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 4001
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: events
+spec:
+  selector:
+    component: events
+  ports:
+    - port: 4001
+      targetPort: 4001
+  type: ClusterIP
+---
+# Transport Service Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transport
+  labels:
+    app: berlin-pulse
+    component: transport
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: transport
+  template:
+    metadata:
+      labels:
+        app: berlin-pulse
+        component: transport
+    spec:
+      containers:
+        - name: transport
+          image: berlinpulse/transport:latest
+          ports:
+            - containerPort: 4002
+          env:
+            - name: PORT
+              value: "4002"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4002
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 4002
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transport
+spec:
+  selector:
+    component: transport
+  ports:
+    - port: 4002
+      targetPort: 4002
+  type: ClusterIP
+---
+# News Service Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news
+  labels:
+    app: berlin-pulse
+    component: news
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: news
+  template:
+    metadata:
+      labels:
+        app: berlin-pulse
+        component: news
+    spec:
+      containers:
+        - name: news
+          image: berlinpulse/news:latest
+          ports:
+            - containerPort: 4003
+          env:
+            - name: PORT
+              value: "4003"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4003
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 4003
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: news
+spec:
+  selector:
+    component: news
+  ports:
+    - port: 4003
+      targetPort: 4003
+  type: ClusterIP
+---
+# Weather Serverless Function Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather
+  labels:
+    app: berlin-pulse
+    component: weather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: weather
+  template:
+    metadata:
+      labels:
+        app: berlin-pulse
+        component: weather
+    spec:
+      containers:
+        - name: weather
+          image: berlinpulse/weather:latest
+          ports:
+            - containerPort: 4005
+          env:
+            - name: PORT
+              value: "4005"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "25m"
+            limits:
+              memory: "64Mi"
+              cpu: "100m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4005
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 4005
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather
+spec:
+  selector:
+    component: weather
+  ports:
+    - port: 4005
+      targetPort: 4005
+  type: ClusterIP

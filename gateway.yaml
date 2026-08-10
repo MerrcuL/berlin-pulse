@@ -1,0 +1,246 @@
+id: /subscriptions/f8822ee1-e054-4179-83de-a7d5b399dce0/resourceGroups/rg-berlinpulse-prod/providers/Microsoft.App/containerapps/gateway-service
+identity:
+  type: None
+location: Switzerland North
+name: gateway-service
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    dapr: null
+    identitySettings: []
+    ingress:
+      additionalPortMappings: null
+      allowInsecure: false
+      clientCertificateMode: null
+      corsPolicy: null
+      customDomains: null
+      exposedPort: 0
+      external: true
+      fqdn: gateway-service.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io
+      ipSecurityRestrictions: null
+      stickySessions: null
+      targetPort: 4000
+      traffic:
+      - latestRevision: true
+        weight: 100
+      transport: Auto
+    maxInactiveRevisions: 100
+    registries:
+    - identity: ''
+      passwordSecretRef: acrberlinpulse2026azurecrio-acrberlinpulse2026
+      server: acrberlinpulse2026.azurecr.io
+      username: acrberlinpulse2026
+    runtime: null
+    secrets:
+    - name: acrberlinpulse2026azurecrio-acrberlinpulse2026
+    service: null
+  customDomainVerificationId: 4327FA2FA2AD2AF380D194ADD5FC095E6CFB626ADDC34B50936B9B43E2B53337
+  delegatedIdentities: []
+  environmentId: /subscriptions/f8822ee1-e054-4179-83de-a7d5b399dce0/resourceGroups/rg-berlinpulse-prod/providers/Microsoft.App/managedEnvironments/env-berlinpulse
+  eventStreamEndpoint: https://switzerlandnorth.azurecontainerapps.dev/subscriptions/f8822ee1-e054-4179-83de-a7d5b399dce0/resourceGroups/rg-berlinpulse-prod/containerApps/gateway-service/eventstream
+  latestReadyRevisionName: gateway-service--0000005
+  latestRevisionFqdn: gateway-service--v9.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io
+  latestRevisionName: gateway-service--v9
+  managedEnvironmentId: /subscriptions/f8822ee1-e054-4179-83de-a7d5b399dce0/resourceGroups/rg-berlinpulse-prod/providers/Microsoft.App/managedEnvironments/env-berlinpulse
+  outboundIpAddresses:
+  - 20.250.128.127
+  - 20.250.79.145
+  - 20.250.128.206
+  - 20.250.79.152
+  - 4.226.31.246
+  - 4.226.31.199
+  - 4.226.24.166
+  - 4.226.31.252
+  - 4.226.31.233
+  - 4.226.31.249
+  - 74.242.215.51
+  - 74.161.118.135
+  - 74.161.118.128
+  - 74.161.126.34
+  - 4.226.10.158
+  - 4.226.10.229
+  - 74.242.215.115
+  - 4.226.27.207
+  - 4.226.10.210
+  - 4.226.21.118
+  - 4.226.10.167
+  - 4.226.35.98
+  - 20.208.67.7
+  - 20.250.199.171
+  - 20.208.67.10
+  - 4.226.21.109
+  - 74.161.118.133
+  - 20.250.199.186
+  - 4.226.21.111
+  - 20.250.199.149
+  - 74.161.118.130
+  - 4.226.35.125
+  - 20.250.199.114
+  - 20.208.66.246
+  - 4.226.10.146
+  - 20.250.199.167
+  - 74.161.126.30
+  - 20.208.67.14
+  - 4.226.27.203
+  - 4.226.21.102
+  - 4.226.53.151
+  - 4.226.10.131
+  - 4.226.53.212
+  - 4.226.35.118
+  - 4.226.27.191
+  - 4.226.53.216
+  - 4.226.21.58
+  - 74.161.105.32
+  - 20.250.199.142
+  - 74.242.215.100
+  - 4.226.27.201
+  - 74.161.118.137
+  - 20.208.66.252
+  - 4.226.53.179
+  - 4.226.35.100
+  - 74.242.215.108
+  - 74.242.215.90
+  - 4.226.10.104
+  - 4.226.21.20
+  - 4.226.10.71
+  - 74.242.215.97
+  - 4.226.10.65
+  - 20.250.199.140
+  - 20.208.67.2
+  - 20.208.66.244
+  - 4.226.53.152
+  - 74.161.118.121
+  - 74.242.215.62
+  - 74.161.104.231
+  - 4.226.53.157
+  - 4.226.35.83
+  - 4.226.35.106
+  - 4.226.20.255
+  - 4.226.27.197
+  - 20.208.67.13
+  - 4.226.35.87
+  - 4.226.27.198
+  - 4.226.35.78
+  - 4.226.10.134
+  - 4.226.27.181
+  - 20.208.27.174
+  - 20.208.28.57
+  - 20.208.27.168
+  - 20.208.28.54
+  - 20.250.185.102
+  - 20.250.185.171
+  - 20.250.185.165
+  - 20.250.185.180
+  - 20.250.185.167
+  - 20.250.185.177
+  - 4.163.42.19
+  - 4.226.27.94
+  - 20.208.65.213
+  - 4.226.34.204
+  - 4.226.34.185
+  - 20.250.92.35
+  - 74.242.214.72
+  - 74.242.214.171
+  - 20.208.66.4
+  - 74.161.118.64
+  - 20.199.155.34
+  - 74.161.118.62
+  - 4.226.34.116
+  - 4.226.27.123
+  - 20.250.95.201
+  - 4.226.51.83
+  - 74.242.214.158
+  - 20.250.95.200
+  - 20.199.155.1
+  - 4.226.27.96
+  - 4.226.20.222
+  - 4.226.34.206
+  - 20.208.66.24
+  - 4.226.34.189
+  - 74.161.118.46
+  - 74.161.118.41
+  - 20.250.92.34
+  - 20.199.154.162
+  - 20.250.206.209
+  - 74.161.118.28
+  - 4.226.34.161
+  - 4.226.19.92
+  - 4.226.51.23
+  - 74.242.214.129
+  - 20.250.206.242
+  - 74.161.118.8
+  - 74.161.118.60
+  - 4.226.20.203
+  - 20.208.65.202
+  - 4.226.34.135
+  - 20.208.55.195
+  - 20.250.205.205
+  - 4.226.33.171
+  - 74.161.117.248
+  - 20.208.65.204
+  - 4.226.16.128
+  - 4.226.20.176
+  - 20.250.95.246
+  - 74.161.117.213
+  - 74.242.213.208
+  - 20.199.154.204
+  - 74.161.118.25
+  - 20.199.154.167
+  - 4.226.27.111
+  - 74.242.206.252
+  - 4.226.51.24
+  - 74.242.214.77
+  - 74.242.214.41
+  - 20.250.60.194
+  - 4.226.27.103
+  - 4.226.33.7
+  - 4.226.27.87
+  - 74.161.117.195
+  - 4.163.43.75
+  - 74.161.118.50
+  - 4.226.50.192
+  - 4.226.19.117
+  - 4.226.32.119
+  - 74.242.193.5
+  - 4.226.18.51
+  - 4.163.46.190
+  provisioningState: Succeeded
+  runningStatus: Running
+  template:
+    containers:
+    - env:
+      - name: EVENTS_SERVICE_URL
+        value: https://events-service.internal.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io
+      - name: TRANSPORT_SERVICE_URL
+        value: https://transport-service.internal.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io
+      - name: NEWS_SERVICE_URL
+        value: https://news-service.internal.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io
+      - name: WEATHER_SERVICE_URL
+        value: https://weather-service.internal.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io
+      image: acrberlinpulse2026.azurecr.io/gateway:v10
+      name: gateway-service
+      resources:
+        cpu: 0.5
+        ephemeralStorage: 2Gi
+        memory: 1Gi
+    initContainers: null
+    revisionSuffix: ''
+    scale:
+      cooldownPeriod: 300
+      maxReplicas: 10
+      minReplicas: null
+      pollingInterval: 30
+      rules: null
+    serviceBinds: null
+    terminationGracePeriodSeconds: null
+    volumes: null
+  workloadProfileName: Consumption
+resourceGroup: rg-berlinpulse-prod
+systemData:
+  createdAt: '2026-08-08T13:23:26.6511099'
+  createdBy: antony.arkhipov@gmail.com
+  createdByType: User
+  lastModifiedAt: '2026-08-09T07:41:51.2494692'
+  lastModifiedBy: antony.arkhipov@gmail.com
+  lastModifiedByType: User
+type: Microsoft.App/containerApps

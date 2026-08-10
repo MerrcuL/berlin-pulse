@@ -1,0 +1,158 @@
+/* ============================================
+   Transport Page
+   ============================================ */
+
+.transport-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-2);
+}
+
+.transport-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+}
+
+.transport-tab:hover {
+  color: var(--text);
+  border-color: var(--border-light);
+  background: var(--bg-elevated);
+}
+
+.transport-tab.active {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.transport-tab.active.tab-ubahn { border-color: var(--ubahn-color); background: rgba(17, 93, 145, 0.1); }
+.transport-tab.active.tab-sbahn { border-color: var(--sbahn-color); background: rgba(0, 141, 79, 0.1); }
+.transport-tab.active.tab-tram { border-color: var(--tram-color); background: rgba(190, 20, 20, 0.1); }
+.transport-tab.active.tab-bus { border-color: var(--bus-color); background: rgba(123, 47, 130, 0.1); }
+.transport-tab.active.tab-ferry { border-color: var(--ferry-color); background: rgba(0, 137, 181, 0.1); }
+
+.transport-tab-icon {
+  font-size: var(--text-base);
+}
+
+.transport-tab-label {
+  font-size: var(--text-sm);
+}
+
+.transport-tab-count {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* Disruption List */
+.disruption-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.disruption-skeleton {
+  height: 100px;
+}
+
+.disruption-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.disruption-card:hover {
+  border-color: var(--border-light);
+  background: var(--bg-card-hover);
+}
+
+.disruption-card.expanded {
+  border-color: var(--border-light);
+}
+
+.disruption-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.disruption-card-lines {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.disruption-card-indicators {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.disruption-expand-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.disruption-card:hover .disruption-expand-icon {
+  border-color: var(--border-light);
+  color: var(--text);
+}
+
+.disruption-card-title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-2);
+}
+
+.disruption-card-dates {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.disruption-card-detail {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  animation: fade-in 200ms ease;
+}
+
+.disruption-card-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  white-space: pre-wrap;
+}

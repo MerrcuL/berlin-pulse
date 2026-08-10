@@ -1,0 +1,118 @@
+services:
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_BLOB_URL: ${VITE_BLOB_URL:-}
+    ports:
+      - "3000:80"
+    depends_on:
+      gateway:
+        condition: service_healthy
+    networks:
+      - berlin-pulse
+    restart: unless-stopped
+
+  # API Gateway
+  gateway:
+    build: ./backend/gateway
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - EVENTS_SERVICE_URL=http://events:4001
+      - TRANSPORT_SERVICE_URL=http://transport:4002
+      - NEWS_SERVICE_URL=http://news:4003
+      - WEATHER_SERVICE_URL=http://weather:4005
+      - FRONTEND_URL=http://localhost:3000
+    depends_on:
+      events:
+        condition: service_healthy
+      transport:
+        condition: service_healthy
+      news:
+        condition: service_healthy
+      weather:
+        condition: service_healthy
+    networks:
+      - berlin-pulse
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Events Microservice
+  events:
+    build: ./backend/services/events
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+    networks:
+      - berlin-pulse
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4001/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Transport Microservice
+  transport:
+    build: ./backend/services/transport
+    ports:
+      - "4002:4002"
+    environment:
+      - PORT=4002
+    networks:
+      - berlin-pulse
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4002/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # News Microservice
+  news:
+    build: ./backend/services/news
+    ports:
+      - "4003:4003"
+    environment:
+      - PORT=4003
+    networks:
+      - berlin-pulse
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4003/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Weather Serverless Function
+  weather:
+    build: ./backend/serverless/weather
+    ports:
+      - "4005:4005"
+    environment:
+      - PORT=4005
+    networks:
+      - berlin-pulse
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4005/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  berlin-pulse:
+    driver: bridge
