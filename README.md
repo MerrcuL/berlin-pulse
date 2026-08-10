@@ -4,7 +4,7 @@
 
 Hosted on:
 - [Azure](https://berlinpulse-web.calmdesert-277cde2b.switzerlandnorth.azurecontainerapps.io)
-- [Home Server](https://berlin.mercul.org)
+- [Home Server](https://berlin.mercul.org) (backup)
 
 A full-stack microservice web application built for the Cloud IT course.
 
